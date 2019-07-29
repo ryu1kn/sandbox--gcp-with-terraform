@@ -1,7 +1,7 @@
 
-# Google Cloud Platform with Terraform Sandbox
+# Terraform Sandbox
 
-## Update resources in GCP
+## Update resources in Google Cloud Platform
 
 Terraform config for GCP is under `gcp` directory.
 
