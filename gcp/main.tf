@@ -7,8 +7,8 @@ provider "google" {
   zone    = "australia-southeast1-a"
 }
 
-resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
+resource "google_compute_instance" "vm_instance_1" {
+  name         = "terraform-instance-1"
   machine_type = "f1-micro"
 
   boot_disk {
@@ -19,6 +19,27 @@ resource "google_compute_instance" "vm_instance" {
 
   network_interface {
     subnetwork = "${google_compute_subnetwork.subnetwork_1.name}"
+    access_config {
+    }
+  }
+
+  metadata = {
+    ssh-keys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
+  }
+}
+
+resource "google_compute_instance" "vm_instance_2" {
+  name         = "terraform-instance-2"
+  machine_type = "f1-micro"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-9"
+    }
+  }
+
+  network_interface {
+    subnetwork = "${google_compute_subnetwork.subnetwork_2.name}"
     access_config {
     }
   }

@@ -1,6 +1,14 @@
 
 # Google Cloud Platform with Terraform Sandbox
 
+## Update resources in GCP
+
+Terraform config for GCP is under `gcp` directory.
+
+```sh
+$ terraform apply -var gce_ssh_pub_key_file=$HOME/.ssh/google_compute_engine.pub -var "gce_ssh_user=$(whoami)" gcp
+```
+
 ## Refs
 
 * [Google Cloud Platform for AWS Professionals: Networking](https://cloud.google.com/docs/compare/aws/networking)
