@@ -5,6 +5,8 @@
 
 Terraform config for GCP is under `gcp` directory.
 
+Environment variable `GOOGLE_CLOUD_KEYFILE_JSON` must be set to point to the key file.
+
 ```sh
 $ terraform apply \
     -var "gce_ssh_pub_key_file=$HOME/.ssh/google_compute_engine.pub" \
