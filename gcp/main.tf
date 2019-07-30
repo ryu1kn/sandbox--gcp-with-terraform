@@ -60,14 +60,26 @@ resource "google_compute_network" "vpc_network_2" {
 }
 
 resource "google_compute_subnetwork" "subnetwork_1" {
-  name   = "network-1-subnet-1"
+  name   = "subnet-1"
   ip_cidr_range = "10.128.0.0/20"
   network       = "${google_compute_network.vpc_network_1.name}"
 }
 
 resource "google_compute_subnetwork" "subnetwork_2" {
-  name   = "network-2-subnet-1"
+  name   = "subnet-2"
   ip_cidr_range = "10.132.0.0/20"
+  network       = "${google_compute_network.vpc_network_2.name}"
+}
+
+resource "google_compute_subnetwork" "subnetwork_3" {
+  name   = "subnet-3"
+  ip_cidr_range = "10.136.0.0/20"
+  network       = "${google_compute_network.vpc_network_1.name}"
+}
+
+resource "google_compute_subnetwork" "subnetwork_4" {
+  name   = "subnet-4"
+  ip_cidr_range = "10.140.0.0/20"
   network       = "${google_compute_network.vpc_network_2.name}"
 }
 
