@@ -1,7 +1,9 @@
-variable credentials_path {}
+
+terraform {
+  backend "gcs" {}
+}
 
 provider "google" {
-  credentials = "${file(var.credentials_path)}"
   region = "australia-southeast1"
   zone = "australia-southeast1-a"
 }
@@ -33,6 +35,14 @@ data "google_iam_policy" "policy" {
 
   binding {
     role = "roles/editor"
+
+    members = [
+      "serviceAccount:project-editor@sandbox--terraform.iam.gserviceaccount.com",
+    ]
+  }
+
+  binding {
+    role = "roles/storage.objectViewer"
 
     members = [
       "serviceAccount:project-editor@sandbox--terraform.iam.gserviceaccount.com",
